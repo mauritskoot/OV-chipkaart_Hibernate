@@ -11,6 +11,7 @@
         <mapping class="studie.dp.domain.Reiziger"/>
         <mapping class="studie.dp.domain.OVChipkaart"/>
         <mapping class="studie.dp.domain.Adres"/>
+        <mapping class="studie.dp.domain.Product"/>
 
     </session-factory>
 

@@ -8,14 +8,13 @@ import javax.persistence.*;
 public class Adres {
     @Id
     @Column(name = "adres_id")
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "adres_id")
     private int adresId;
     private String postcode;
     private String huisnummer;
     private String straat;
     private String woonplaats;
-    @Transient
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "adres_id")
     private Reiziger reiziger;
 
 

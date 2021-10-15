@@ -2,6 +2,8 @@ package studie.dp.domain;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity(name = "OVChipkaart")
@@ -16,7 +18,10 @@ public class OVChipkaart {
     private double saldo;
     @ManyToOne
     private Reiziger reiziger;
-
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "ov_chipkaart_product", joinColumns = {@JoinColumn(referencedColumnName = "kaart_nummer")},
+    inverseJoinColumns = {@JoinColumn(referencedColumnName = "product_nummer")})
+    private ArrayList<Product> producten = new ArrayList<>();
 
     public OVChipkaart(int kaartNummer, Date geldigTot, int klasse, double saldo, Reiziger reiziger) {
         this.kaartNummer = kaartNummer;
@@ -76,6 +81,14 @@ public class OVChipkaart {
     }
     public void setReiziger(Reiziger reiziger) {
         this.reiziger = reiziger;
+    }
+
+    public ArrayList<Product> getProducten() {
+        return producten;
+    }
+
+    public void setProducten(ArrayList<Product> producten) {
+        this.producten = producten;
     }
 
     @Override
